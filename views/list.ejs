@@ -1,0 +1,40 @@
+<%- include("header") -%>
+    <div class="box" id="heading">
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <%  newListItem.forEach(function(item){   %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id%>" onChange="this.form.submit()">
+                    <p>
+                        <%= item.name %>
+                    </p>
+                </div>
+                <input type="hidden" name="TitleName" value="<%=listTitle%>">
+            </form>
+            <% }); %>
+                <form class="item" action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="list" value=<%=listTitle%>>+</button>
+                </form>
+    </div>
+    <!-- <% if(listTitle==="Saturday " || listTitle==="Sunday " ){ %>
+        <h1 style="color:aquamarine ">It's a
+            <%=listTitle%>
+        </h1>
+        <%} else{ %>
+            <h1 style="color: brown; ">It's a
+                <%=listTitle%>
+            </h1>
+            <%  } %> -->
+
+    <!-- <ul>
+        <!-- <li>Buy Food</li>
+        <li>Cook Food</li>
+        <li>Eat Food</li> -->
+
+    <%- include("footer") -%>
